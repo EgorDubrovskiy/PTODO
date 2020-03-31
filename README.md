@@ -2,7 +2,7 @@ PTODO - Programmer's TODO
 
 #For developers
 
-Install Docker and Docker Compose
+Install Docker and Docker Compose.<br/>
 Guide for windows: https://www.youtube.com/watch?v=a5mxBTGfC5k
 
 For frontend side:
