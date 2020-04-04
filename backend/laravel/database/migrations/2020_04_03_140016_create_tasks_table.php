@@ -20,12 +20,13 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
+
             $table->timestampTz('started_at')->nullable();
             $table->timestampTz('done_at')->nullable();
             $table->timestampTz('scheduled_at');
             $table->timestampTz('notify_at')->nullable();
             $table->time('expected_time')->nullable();
-            $table->string('text', 8000);
+            $table->string('text', 60);
 
             $table->unsignedBigInteger('prent_task_id')->nullable();
             $table->foreign('prent_task_id')->references('id')->on('tasks');
