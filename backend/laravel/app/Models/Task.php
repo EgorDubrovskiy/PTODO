@@ -3,28 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Task
  * @package App\Models
  * @property-read int $id
- * @property-read string $createdAt
- * @property-read string $updatedAt
- * @property-read string|null $deletedAt
- * @property string|null $startedAt
- * @property string|null $doneAt
- * @property string $scheduledAt
- * @property string|null $notifyAt
- * @property string|null $expectedTime
- * @property int|null $parentTaskId
- * @property int $userId
+ * @property-read string $created_at
+ * @property-read string $updated_at
+ * @property string|null $started_at
+ * @property string|null $done_at
+ * @property string $scheduled_at
+ * @property string|null $notify_at
+ * @property string|null $expected_time
+ * @property int|null $parent_task_id
+ * @property int $user_id
  * @property string $text
  */
 class Task extends Model
 {
-    use SoftDeletes;
-
     /**
      * The attributes that are mass assignable.
      *

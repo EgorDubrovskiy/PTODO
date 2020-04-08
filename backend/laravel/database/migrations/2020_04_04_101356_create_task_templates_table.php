@@ -19,12 +19,11 @@ class CreateTaskTemplatesTable extends Migration
         Schema::create('task_templates', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->softDeletes();
 
-            $table->string('name', 60);
+            $table->string('text', 60);
 
-            $table->unsignedBigInteger('task_template_item_id');
-            $table->foreign('task_template_item_id')->references('id')->on('task_template_items');
+            $table->unsignedBigInteger('parent_task_id')->index()->nullable();
+            $table->foreign('parent_task_id')->references('id')->on('task_templates')->onDelete('cascade');
         });
     }
 

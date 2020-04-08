@@ -19,20 +19,19 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->softDeletes();
 
             $table->timestampTz('started_at')->nullable();
-            $table->timestampTz('done_at')->nullable();
-            $table->timestampTz('scheduled_at');
+            $table->timestampTz('done_at')->index()->nullable();
+            $table->timestampTz('scheduled_at')->index();
             $table->timestampTz('notify_at')->nullable();
             $table->time('expected_time')->nullable();
             $table->string('text', 60);
 
-            $table->unsignedBigInteger('prent_task_id')->nullable();
-            $table->foreign('prent_task_id')->references('id')->on('tasks');
+            $table->unsignedBigInteger('parent_task_id')->index()->nullable();
+            $table->foreign('parent_task_id')->references('id')->on('tasks')->onDelete('cascade');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
