@@ -19,11 +19,12 @@ class CreateTaskCommentsTable extends Migration
         Schema::create('task_comments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->string('text', 8000);
 
             $table->unsignedBigInteger('task_id')->index();
-            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
+            $table->foreign('task_id')->references('id')->on('tasks');
         });
     }
 

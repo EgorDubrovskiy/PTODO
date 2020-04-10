@@ -19,6 +19,7 @@ class CreateUserTaskTemplatesTable extends Migration
         Schema::create('user_task_templates', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->string('name', 60);
             $table->boolean('available_for_all')->index()->default(false);
@@ -27,7 +28,7 @@ class CreateUserTaskTemplatesTable extends Migration
             $table->foreign('task_template_id')->references('id')->on('task_templates');
 
             $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

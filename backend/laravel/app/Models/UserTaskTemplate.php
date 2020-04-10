@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class UserTaskTemplate
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int $id
  * @property-read string $created_at
  * @property-read string $updated_at
+ * @property-read string|null $deleted_at
  * @property string $name
  * @property bool $available_for_all
  * @property int $task_template_id
@@ -17,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserTaskTemplate extends Model
 {
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *

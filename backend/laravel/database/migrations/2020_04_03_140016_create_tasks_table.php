@@ -19,6 +19,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->timestampTz('started_at')->nullable();
             $table->timestampTz('done_at')->index()->nullable();
@@ -28,10 +29,10 @@ class CreateTasksTable extends Migration
             $table->string('text', 60);
 
             $table->unsignedBigInteger('parent_task_id')->index()->nullable();
-            $table->foreign('parent_task_id')->references('id')->on('tasks')->onDelete('cascade');
+            $table->foreign('parent_task_id')->references('id')->on('tasks');
 
             $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
