@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 /**
  * Class User
  * @package App
+ *
+ * Database fields:
  * @property-read int $id
  * @property-read string $created_at
  * @property-read string $updated_at

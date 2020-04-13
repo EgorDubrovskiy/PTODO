@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class UserTaskTemplate
  * @package App\Models
+ *
+ * Database fields:
  * @property-read int $id
  * @property-read string $created_at
  * @property-read string $updated_at
