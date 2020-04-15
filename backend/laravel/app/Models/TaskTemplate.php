@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -16,6 +18,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read string|null $deleted_at
  * @property string $text
  * @property int|null $parent_task_id
+ * @property int $user_id
+ *
+ * Relations:
+ * @property Collection $childTasks
  */
 class TaskTemplate extends Model
 {
@@ -29,4 +35,12 @@ class TaskTemplate extends Model
     protected $fillable = [
         'text',
     ];
+
+    /**
+     * @return HasMany
+     */
+    public function childTasks(): HasMany
+    {
+        return $this->hasMany(get_class($this), 'parent_task_id');
+    }
 }

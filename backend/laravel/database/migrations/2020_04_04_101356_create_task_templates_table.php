@@ -25,6 +25,9 @@ class CreateTaskTemplatesTable extends Migration
 
             $table->unsignedBigInteger('parent_task_id')->index()->nullable();
             $table->foreign('parent_task_id')->references('id')->on('task_templates');
+
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
