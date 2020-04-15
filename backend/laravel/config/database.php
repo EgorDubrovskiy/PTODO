@@ -144,4 +144,39 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Database Seeders
+    |--------------------------------------------------------------------------
+    |
+    | Configuration for generating data for test.
+    |
+    */
+    'seeders' => [
+        'test' => [
+            'user' => [
+                'amount_simple_users' => env('AMOUNT_SIMPLE_TEST_USERS', 100000),
+                'amount_deleted_users' => env('AMOUNT_DELETED_TEST_USERS', 100000),
+            ],
+            'task' => [
+                'amount_simple_tasks' => env('AMOUNT_SIMPLE_TEST_TASKS', 25000),
+                'amount_parent_tasks' => env('AMOUNT_PARENT_TEST_TASKS', 25000),
+                'amount_deleted_tasks' => env('AMOUNT_DELETED_TEST_TASKS', 50000),
+                'demo_task' => [
+                    'amount_nested' => env('AMOUNT_NESTED_FOR_DEMO_TASK', 3),
+                    'amount_children_for_nested' => env('AMOUNT_CHILDREN_FOR_NESTED_DEMO_TASK', 2),
+                ],
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Id of user for test
+    |--------------------------------------------------------------------------
+    |
+    | Id of user for test this application. Use in seeders which create test data.
+    |
+    */
+    'test_user_id' => env('TEST_USER_ID'),
 ];

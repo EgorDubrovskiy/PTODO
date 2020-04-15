@@ -37,10 +37,14 @@ $factory->define(Task::class, function (Faker $faker) {
     ];
 });
 
-$factory->state(Task::class, 'deleted', [
-    'deleted_at' => now(),
-]);
+$factory->state(Task::class, 'deleted', function (Faker $faker) {
+    return [
+        'deleted_at' => now(),
+    ];
+});
 
-$factory->state(Task::class, 'random_user', [
-    'user_id' => User::all(['id'])->random()->id,
-]);
+$factory->state(Task::class, 'random_user', function (Faker $faker) {
+    return [
+        'user_id' => User::all(['id'])->random()->id,
+    ];
+});

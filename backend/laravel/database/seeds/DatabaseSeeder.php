@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+/**
+ * Class DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,6 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        if (is_local_env()) {
+            $this->callTestSeeders();
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function callTestSeeders(): void
+    {
+        $this->call([
+            TestUserTableSeeder::class,
+            TestTaskTableSeeder::class,
+        ]);
     }
 }
