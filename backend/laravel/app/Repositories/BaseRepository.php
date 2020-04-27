@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Interfaces\Repositories\ModelRepositoryInterface;
@@ -41,6 +42,15 @@ class BaseRepository implements ModelRepositoryInterface
     public function find(int $id): ?Model
     {
         return $this->newQuery()->find($id);
+    }
+
+    /**
+     * @param array $columns
+     * @return Collection
+     */
+    public function all(array $columns = []): Collection
+    {
+        return $this->newQuery()->get($columns);
     }
 
     /**

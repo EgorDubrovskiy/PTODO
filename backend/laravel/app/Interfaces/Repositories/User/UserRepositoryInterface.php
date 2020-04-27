@@ -1,17 +1,14 @@
 <?php
 
 namespace App\Interfaces\Repositories\User;
-use Illuminate\Database\Eloquent\Collection;
+
+use App\Interfaces\Repositories\ModelRepositoryInterface;
 
 /**
  * Interface UserRepositoryInterface
  * @package App\Interfaces\Repositories\User
  */
-interface UserRepositoryInterface
+interface UserRepositoryInterface extends ModelRepositoryInterface
 {
-    /**
-     * @param array $columns
-     * @return Collection
-     */
-    public function all(array $columns = []): Collection;
+
 }

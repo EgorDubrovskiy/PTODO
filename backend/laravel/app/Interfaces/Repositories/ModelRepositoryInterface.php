@@ -2,6 +2,7 @@
 
 namespace App\Interfaces\Repositories;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,4 +22,10 @@ interface ModelRepositoryInterface
      * @return Model|null
      */
     public function find(int $id): ?Model;
+
+    /**
+     * @param array $columns
+     * @return Collection
+     */
+    public function all(array $columns = []): Collection;
 }
