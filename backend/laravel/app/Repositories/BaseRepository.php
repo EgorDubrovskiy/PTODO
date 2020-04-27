@@ -9,8 +9,9 @@ use App\Interfaces\Repositories\ModelRepositoryInterface;
 
 /**
  * Class BaseRepository
+ * @package App\Repositories
  */
-class BaseRepository implements ModelRepositoryInterface
+abstract class BaseRepository implements ModelRepositoryInterface
 {
     /**
      * @var Model

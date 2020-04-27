@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class ModelService
  * @package App\Services
  */
-class ModelService implements ModelServiceInterface
+abstract class ModelService implements ModelServiceInterface
 {
     /**
      * @var ModelRepositoryInterface $repository
