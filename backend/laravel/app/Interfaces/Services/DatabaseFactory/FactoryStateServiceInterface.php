@@ -4,6 +4,7 @@ namespace App\Interfaces\Services\DatabaseFactory;
 
 use DateTime;
 use Exception;
+use InvalidArgumentException;
 
 /**
  * Interface FactoryStateServiceInterface
@@ -22,6 +23,7 @@ interface FactoryStateServiceInterface
     /**
      * @param array $attributeNames
      * @return array
+     * @throws InvalidArgumentException
      */
     public function getStateByAttributes(array $attributeNames): array;
 }

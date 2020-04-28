@@ -7,6 +7,7 @@ use App\Interfaces\Services\User\UserServiceInterface;
 use DateTime;
 use Exception;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 /**
  * Class FactoryStateService
@@ -55,6 +56,7 @@ class FactoryStateService implements FactoryStateServiceInterface
     /**
      * @param array $attributeNames
      * @return array
+     * @throws InvalidArgumentException
      */
     public function getStateByAttributes(array $attributeNames): array
     {
@@ -62,6 +64,10 @@ class FactoryStateService implements FactoryStateServiceInterface
 
         foreach ($attributeNames as $attributeName) {
             $getterName = 'get' . $this->stringService::studly($attributeName) . 'Attribute';
+
+            if (!method_exists($this, $getterName)) {
+                throw new InvalidArgumentException('Getter for the attribute ' . $attributeName . 'does not exists');
+            }
 
             $state[$attributeName] = $this->$getterName();
         }
