@@ -38,7 +38,7 @@ abstract class TestSeeder extends Seeder
      * @param int $amount
      * @return Collection
      */
-    public function createByCustomState(string $className, array $stateAttributes, int $amount = 1): Collection
+    public function createWithCustomAttributes(string $className, array $stateAttributes, int $amount = 1): Collection
     {
         $state = $this->stateService->getStateByAttributes($stateAttributes);
 
@@ -51,7 +51,7 @@ abstract class TestSeeder extends Seeder
      * @param int $amount
      * @return Collection
      */
-    public function makeByCustomState(string $className, array $stateAttributes, int $amount = 1): Collection
+    public function makeWithCustomAttributes(string $className, array $stateAttributes, int $amount = 1): Collection
     {
         $state = $this->stateService->getStateByAttributes($stateAttributes);
 

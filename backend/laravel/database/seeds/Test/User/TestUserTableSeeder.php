@@ -18,6 +18,6 @@ class TestUserTableSeeder extends TestSeeder
         $amountDeletedUsers = (int) config('database.seeders.test.user.amount_deleted_users');
 
         $this->getFactoryBuilder(User::class, $amountSimpleUsers)->create();
-        $this->createByCustomState(User::class, ['deleted_at'], $amountDeletedUsers);
+        $this->createWithCustomAttributes(User::class, ['deleted_at'], $amountDeletedUsers);
     }
 }
