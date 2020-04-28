@@ -167,6 +167,15 @@ return [
                     'amount_children_for_nested' => env('AMOUNT_CHILDREN_FOR_NESTED_DEMO_TASK', 2),
                 ],
             ],
+            'task_template' => [
+                'amount_simple_templates' => env('AMOUNT_SIMPLE_TEST_TASK_TEMPLATES', 25000),
+                'amount_parent_templates' => env('AMOUNT_PARENT_TEST_TASK_TEMPLATES', 25000),
+                'amount_deleted_templates' => env('AMOUNT_DELETED_TEST_TASK_TEMPLATES', 50000),
+                'demo_template' => [
+                    'amount_nested' => env('AMOUNT_NESTED_FOR_DEMO_TASK_TEMPLATE', 3),
+                    'amount_children_for_nested' => env('AMOUNT_CHILDREN_FOR_NESTED_DEMO_TASK_TEMPLATE', 2),
+                ],
+            ],
         ],
     ],
 
