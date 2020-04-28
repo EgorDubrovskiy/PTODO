@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\User;
 
 /**
  * Class TestUserTableSeeder
  */
-class TestUserTableSeeder extends Seeder
+class TestUserTableSeeder extends TestSeeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +17,7 @@ class TestUserTableSeeder extends Seeder
         $amountSimpleUsers = (int) config('database.seeders.test.user.amount_simple_users');
         $amountDeletedUsers = (int) config('database.seeders.test.user.amount_deleted_users');
 
-        factory(User::class, $amountSimpleUsers)->create();
-        factory(User::class, $amountDeletedUsers)->state('deleted')->create();
+        $this->getFactoryBuilder(User::class, $amountSimpleUsers)->create();
+        $this->createByCustomState(User::class, ['deleted_at'], $amountDeletedUsers);
     }
 }
