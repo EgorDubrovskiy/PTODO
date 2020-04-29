@@ -49,9 +49,18 @@ abstract class BaseRepository implements ModelRepositoryInterface
      * @param array $columns
      * @return Collection
      */
-    public function all(array $columns = []): Collection
+    public function all(array $columns = ['*']): Collection
     {
         return $this->newQuery()->get($columns);
+    }
+
+    /**
+     * @param array $columns
+     * @return Collection
+     */
+    public function allDeleted(array $columns = ['*']): Collection
+    {
+        return $this->newQuery()->onlyTrashed()->get($columns);
     }
 
     /**

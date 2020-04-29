@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Interfaces\Repositories\TaskTemplate\TaskTemplateRepositoryInterface;
+use App\Repositories\TaskTemplate\TaskTemplateRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\Repositories\ModelRepositoryInterface;
 use App\Repositories\BaseRepository;
@@ -23,6 +25,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(ModelRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(TaskTemplateRepositoryInterface::class, TaskTemplateRepository::class);
     }
 
     /**

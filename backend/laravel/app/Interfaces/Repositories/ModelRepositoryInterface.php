@@ -27,5 +27,11 @@ interface ModelRepositoryInterface
      * @param array $columns
      * @return Collection
      */
-    public function all(array $columns = []): Collection;
+    public function all(array $columns = ['*']): Collection;
+
+    /**
+     * @param array $columns
+     * @return Collection
+     */
+    public function allDeleted(array $columns = ['*']): Collection;
 }
