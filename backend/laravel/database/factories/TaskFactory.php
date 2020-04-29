@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
 use App\Models\Task;
 use Faker\Generator as Faker;
 
@@ -34,17 +33,5 @@ $factory->define(Task::class, function (Faker $faker) {
         'text' => $faker->realText(60),
         'parent_task_id' => null,
         'user_id' => null,
-    ];
-});
-
-$factory->state(Task::class, 'deleted', function (Faker $faker) {
-    return [
-        'deleted_at' => now(),
-    ];
-});
-
-$factory->state(Task::class, 'random_user', function (Faker $faker) {
-    return [
-        'user_id' => User::all(['id'])->random()->id,
     ];
 });

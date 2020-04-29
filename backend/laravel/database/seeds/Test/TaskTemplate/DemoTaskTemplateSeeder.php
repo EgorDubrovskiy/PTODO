@@ -39,6 +39,7 @@ class DemoTaskTemplateSeeder extends TestSeeder
         parent::__construct($stateService, $eloquentFactory);
 
         $this->taskModel = TaskTemplate::class;
+
         $this->amountChildTasks = (int) config('database.seeders.test.task_template.demo_template.amount_children_for_nested');
         $this->amountNested = (int) config('database.seeders.test.task_template.demo_template.amount_nested');
         $this->taskOwnerId = (int) config('database.test_user_id');

@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Collection;
 use App\Interfaces\Services\DatabaseFactory\FactoryStateServiceInterface;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Database\Eloquent\FactoryBuilder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TestSeeder
@@ -40,9 +41,12 @@ abstract class TestSeeder extends Seeder
      */
     public function createWithCustomAttributes(string $className, array $stateAttributes, int $amount = 1): Collection
     {
-        $state = $this->stateService->getStateByAttributes($stateAttributes);
+        $modelsCollection = $this->makeWithCustomAttributes($className, $stateAttributes, $amount);
+        $modelsCollection->map(function (Model $model) {
+            $model->save();
+        });
 
-        return $this->getFactoryBuilder($className, $amount)->create($state);
+        return $modelsCollection;
     }
 
     /**
@@ -53,9 +57,16 @@ abstract class TestSeeder extends Seeder
      */
     public function makeWithCustomAttributes(string $className, array $stateAttributes, int $amount = 1): Collection
     {
-        $state = $this->stateService->getStateByAttributes($stateAttributes);
+        $modelsCollection = $this->getFactoryBuilder($className, $amount)->make();
+        $modelsCollection->map(function (Model $model) use ($stateAttributes) {
+            $state = $this->stateService->getStateByAttributes($stateAttributes);
 
-        return $this->getFactoryBuilder($className, $amount)->make($state);
+            foreach ($state as $attributeName => $attributeValue) {
+                $model->$attributeName = $attributeValue;
+            }
+        });
+
+        return $modelsCollection;
     }
 
     /**
