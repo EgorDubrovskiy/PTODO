@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TestUserTableSeeder::class,
+            TestTaskTemplateTableSeeder::class,
             TestTaskTableSeeder::class,
         ]);
     }
