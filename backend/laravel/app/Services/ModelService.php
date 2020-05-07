@@ -27,6 +27,15 @@ abstract class ModelService implements ModelServiceInterface
     }
 
     /**
+     * @param int $id
+     * @return Model|null
+     */
+    public function find(int $id): ?Model
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
      * @param array $columns
      * @return Model|null
      */
