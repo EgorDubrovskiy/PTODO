@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $text
  * @property int|null $parent_task_id
  * @property int $user_id
+ * @property string|null $parent_path
  *
  * Relations:
  * @property Collection $childTasks
