@@ -3,12 +3,19 @@
 use App\Models\TaskTemplate;
 use App\Interfaces\Services\DatabaseFactory\FactoryStateServiceInterface;
 use Illuminate\Database\Eloquent\Factory;
+use App\Interfaces\Services\Tasks\TasksServiceInterface;
+use App\Interfaces\Services\Tasks\TaskTemplateServiceInterface;
 
 /**
  * Class TestTaskTemplateTableSeeder
  */
 class TestTaskTemplateTableSeeder extends TestSeeder
 {
+    /**
+     * @var TasksServiceInterface $taskService
+     */
+    protected $taskService;
+
     /**
      * @var string $taskModel
      */
@@ -37,11 +44,18 @@ class TestTaskTemplateTableSeeder extends TestSeeder
     /**
      * TestTaskTemplateTableSeeder constructor.
      * @param FactoryStateServiceInterface $stateService
+     * @param TaskTemplateServiceInterface $taskService
      * @param Factory $eloquentFactory
      */
-    public function __construct(FactoryStateServiceInterface $stateService, Factory $eloquentFactory)
+    public function __construct(
+        FactoryStateServiceInterface $stateService,
+        TaskTemplateServiceInterface $taskService,
+        Factory $eloquentFactory
+    )
     {
         parent::__construct($stateService, $eloquentFactory);
+
+        $this->taskService = $taskService;
 
         $this->taskModel = TaskTemplate::class;
         $this->demoSeeder = DemoTaskTemplateSeeder::class;
@@ -80,6 +94,7 @@ class TestTaskTemplateTableSeeder extends TestSeeder
                         'user_id' => $parentTask->user_id,
                         'deleted_at' => $parentTask->deleted_at,
                     ]);
+                $childTask->parent_path = $this->taskService->generateParentPath($parentTask);
 
                 $parentTask->childTasks()->save($childTask);
             });

@@ -3,12 +3,19 @@
 use App\Interfaces\Services\DatabaseFactory\FactoryStateServiceInterface;
 use Illuminate\Database\Eloquent\Factory;
 use App\Models\TaskTemplate;
+use App\Interfaces\Services\Tasks\TasksServiceInterface;
+use App\Interfaces\Services\Tasks\TaskTemplateServiceInterface;
 
 /**
  * Class DemoTaskTemplateSeeder
  */
 class DemoTaskTemplateSeeder extends TestSeeder
 {
+    /**
+     * @var TasksServiceInterface $taskService
+     */
+    protected $taskService;
+
     /**
      * @var string $taskModel
      */
@@ -32,11 +39,18 @@ class DemoTaskTemplateSeeder extends TestSeeder
     /**
      * DemoTaskTemplateSeeder constructor.
      * @param FactoryStateServiceInterface $stateService
+     * @param TaskTemplateServiceInterface $taskService
      * @param Factory $eloquentFactory
      */
-    public function __construct(FactoryStateServiceInterface $stateService, Factory $eloquentFactory)
+    public function __construct(
+        FactoryStateServiceInterface $stateService,
+        TaskTemplateServiceInterface $taskService,
+        Factory $eloquentFactory
+    )
     {
         parent::__construct($stateService, $eloquentFactory);
+
+        $this->taskService = $taskService;
 
         $this->taskModel = TaskTemplate::class;
 
@@ -68,6 +82,8 @@ class DemoTaskTemplateSeeder extends TestSeeder
 
         $childTasks = $this->getFactoryBuilder($this->taskModel, $this->amountChildTasks)
             ->make(['user_id' => $parentTask->user_id]);
+        $this->taskService->setPathsForSameParent($childTasks, $parentTask);
+
         $parentTask->childTasks()->saveMany($childTasks);
 
         $this->generateNested($childTasks->last(), --$amountNested);
