@@ -24,6 +24,12 @@ interface ModelRepositoryInterface
     public function find(int $id): ?Model;
 
     /**
+     * @param int $id
+     * @return Model|null
+     */
+    public function findWithDeleted(int $id): ?Model;
+
+    /**
      * @param array $columns
      * @return Collection
      */

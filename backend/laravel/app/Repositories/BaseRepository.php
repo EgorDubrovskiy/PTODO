@@ -46,6 +46,15 @@ abstract class BaseRepository implements ModelRepositoryInterface
     }
 
     /**
+     * @param int $id
+     * @return Model|null
+     */
+    public function findWithDeleted(int $id): ?Model
+    {
+        return $this->newQuery()->withTrashed()->find($id);
+    }
+
+    /**
      * @param array $columns
      * @return Collection
      */
