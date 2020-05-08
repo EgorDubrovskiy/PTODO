@@ -31,7 +31,6 @@ class CreateTaskTemplatesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
-        DB::statement('CREATE EXTENSION ltree');
         DB::statement('ALTER TABLE task_templates ADD COLUMN parent_path LTREE');
         DB::statement('CREATE INDEX task_templates_parent_path_index ON task_templates USING GIST (parent_path)');
     }
@@ -44,6 +43,5 @@ class CreateTaskTemplatesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('task_templates');
-        DB::statement('DROP EXTENSION ltree');
     }
 }
