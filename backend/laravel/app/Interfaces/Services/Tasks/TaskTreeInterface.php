@@ -2,18 +2,17 @@
 
 namespace App\Interfaces\Services\Tasks;
 
-use App\Interfaces\Services\ModelServiceInterface;
 use App\Models\Task;
 use App\Models\TaskTemplate;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Interface for common behavior for Task and TaskTemplate
+ * Interface  for tree logic for Task and TaskTemplate
  *
- * Class TasksServiceInterface
- * @package App\Interfaces\Services\Task
+ * Interface TaskTreeInterface
+ * @package App\Interfaces\Services\Tasks
  */
-interface TasksServiceInterface extends ModelServiceInterface
+interface TaskTreeInterface
 {
     /**
      * @param TaskTemplate|null $parentTask

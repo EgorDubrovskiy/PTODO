@@ -3,7 +3,7 @@
 use App\Models\TaskTemplate;
 use App\Interfaces\Services\DatabaseFactory\FactoryStateServiceInterface;
 use Illuminate\Database\Eloquent\Factory;
-use App\Interfaces\Services\Tasks\TasksServiceInterface;
+use App\Interfaces\Services\Tasks\TaskTreeInterface;
 use App\Interfaces\Services\Tasks\TaskTemplateServiceInterface;
 
 /**
@@ -12,7 +12,7 @@ use App\Interfaces\Services\Tasks\TaskTemplateServiceInterface;
 class TestTaskTemplateTableSeeder extends TestSeeder
 {
     /**
-     * @var TasksServiceInterface $taskService
+     * @var TaskTreeInterface $taskService
      */
     protected $taskService;
 

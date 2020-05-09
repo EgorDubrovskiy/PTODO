@@ -12,7 +12,7 @@ use App\Services\ModelService;
  */
 class TaskTemplateService extends ModelService implements TaskTemplateServiceInterface
 {
-    use TasksTrait;
+    use TaskTreeTrait;
 
     /**
      * TaskTemplateService constructor.

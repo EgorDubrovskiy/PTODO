@@ -2,25 +2,19 @@
 
 namespace App\Services\Tasks;
 
-use App\Interfaces\Repositories\ModelRepositoryInterface;
 use App\Models\Task;
 use App\Models\TaskTemplate;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Trait for common behavior for Task and TaskTemplate.
- * Implements TasksServiceInterface.
+ * Trait for tree logic for Task and TaskTemplate.
+ * Implements TaskTreeInterface.
  *
- * Trait TaskServicesTrait
+ * Trait TaskTreeTrait
  * @package App\Services\Tasks
  */
-trait TasksTrait
+trait TaskTreeTrait
 {
-    /**
-     * @var ModelRepositoryInterface $repository
-     */
-    protected $repository;
-
     /**
      * @param TaskTemplate|null $parentTask
      * @return string|null
