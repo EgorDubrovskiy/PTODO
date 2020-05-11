@@ -2,9 +2,10 @@
 
 use App\Interfaces\Services\DatabaseFactory\FactoryStateServiceInterface;
 use Illuminate\Database\Eloquent\Factory;
-use App\Models\TaskTemplate;
+use App\Models\Tasks\TaskTemplate;
 use App\Interfaces\Services\Tasks\TaskTreeInterface;
 use App\Interfaces\Services\Tasks\TaskTemplateServiceInterface;
+use App\Models\Tasks\BaseTask;
 
 /**
  * Class DemoTaskTemplateSeeder
@@ -71,10 +72,10 @@ class DemoTaskTemplateSeeder extends TestSeeder
     }
 
     /**
-     * @param TaskTemplate $parentTask
+     * @param BaseTask $parentTask
      * @param int $amountNested
      */
-    protected function generateNested(TaskTemplate $parentTask, int $amountNested): void
+    protected function generateNested(BaseTask $parentTask, int $amountNested): void
     {
         if ($amountNested === 0) {
             return;

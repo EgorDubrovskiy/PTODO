@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Task;
+use App\Models\Tasks\Task;
 use App\Interfaces\Services\DatabaseFactory\FactoryStateServiceInterface;
 use Illuminate\Database\Eloquent\Factory;
 use App\Interfaces\Services\Tasks\TaskServiceInterface;

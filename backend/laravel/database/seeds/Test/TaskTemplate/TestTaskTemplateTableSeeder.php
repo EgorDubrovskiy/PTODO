@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\TaskTemplate;
+use App\Models\Tasks\TaskTemplate;
 use App\Interfaces\Services\DatabaseFactory\FactoryStateServiceInterface;
 use Illuminate\Database\Eloquent\Factory;
 use App\Interfaces\Services\Tasks\TaskTreeInterface;
 use App\Interfaces\Services\Tasks\TaskTemplateServiceInterface;
+use App\Models\Tasks\BaseTask;
 
 /**
  * Class TestTaskTemplateTableSeeder
@@ -88,7 +89,7 @@ class TestTaskTemplateTableSeeder extends TestSeeder
     protected function generateParentTasks(array $customStateAttributes, int $amount): void
     {
         $this->createWithCustomAttributes($this->taskModel, $customStateAttributes, $amount)
-            ->each(function (TaskTemplate $parentTask) {
+            ->each(function (BaseTask $parentTask) {
                 $childTask = $this->eloquentFactory->of($this->taskModel)
                     ->make([
                         'user_id' => $parentTask->user_id,

@@ -3,7 +3,7 @@
 namespace App\Repositories\TaskTemplate;
 
 use App\Interfaces\Repositories\TaskTemplate\TaskTemplateRepositoryInterface;
-use App\Models\TaskTemplate;
+use App\Models\Tasks\TaskTemplate;
 use App\Repositories\BaseRepository;
 
 /**

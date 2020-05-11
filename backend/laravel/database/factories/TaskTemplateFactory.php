@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\TaskTemplate;
+use App\Models\Tasks\TaskTemplate;
 use Faker\Generator as Faker;
 
 $factory->define(TaskTemplate::class, function (Faker $faker) {

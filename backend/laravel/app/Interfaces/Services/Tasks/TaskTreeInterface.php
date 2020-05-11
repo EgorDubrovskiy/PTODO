@@ -2,7 +2,7 @@
 
 namespace App\Interfaces\Services\Tasks;
 
-use App\Models\BaseTask;
+use App\Models\Tasks\BaseTask;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
