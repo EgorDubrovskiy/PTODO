@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Interfaces\Models\Tasks\TaskRelationshipsInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -24,9 +24,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Relations:
  * @property Collection $childTasks
  */
-class TaskTemplate extends Model
+class TaskTemplate extends Model implements TaskRelationshipsInterface
 {
-    use SoftDeletes;
+    use SoftDeletes, TaskRelationshipsTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -36,12 +36,4 @@ class TaskTemplate extends Model
     protected $fillable = [
         'text',
     ];
-
-    /**
-     * @return HasMany
-     */
-    public function childTasks(): HasMany
-    {
-        return $this->hasMany(get_class($this), 'parent_task_id');
-    }
 }
