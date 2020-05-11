@@ -2,8 +2,7 @@
 
 namespace App\Services\Tasks;
 
-use App\Models\Task;
-use App\Models\TaskTemplate;
+use App\Models\BaseTask;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -16,7 +15,7 @@ use Illuminate\Database\Eloquent\Collection;
 trait TaskTreeTrait
 {
     /**
-     * @param TaskTemplate|null $parentTask
+     * @param BaseTask|null $parentTask
      * @return string|null
      */
     public function generateParentPath($parentTask): ?string
@@ -30,7 +29,7 @@ trait TaskTreeTrait
 
     /**
      * @param Collection $tasks
-     * @param TaskTemplate|Task|null $parentTask
+     * @param BaseTask|null $parentTask
      * @return void
      */
     public function setPathsForSameParent(Collection $tasks, $parentTask): void
