@@ -36,7 +36,7 @@ class CreateTasksTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
-        DB::statement('CREATE EXTENSION ltree');
+        DB::statement('CREATE EXTENSION IF NOT EXISTS ltree');
         DB::statement('ALTER TABLE tasks ADD COLUMN parent_path LTREE');
         DB::statement('CREATE INDEX tasks_parent_path_index ON tasks USING GIST (parent_path)');
     }

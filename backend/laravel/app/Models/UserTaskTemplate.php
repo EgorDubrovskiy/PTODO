@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read string|null $deleted_at
  * @property string $name
  * @property bool $available_for_all
- * @property int $task_template_id
  * @property int $user_id
  */
 class UserTaskTemplate extends Model

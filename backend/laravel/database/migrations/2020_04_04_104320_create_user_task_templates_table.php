@@ -24,9 +24,6 @@ class CreateUserTaskTemplatesTable extends Migration
             $table->string('name', 60);
             $table->boolean('available_for_all')->index()->default(false);
 
-            $table->unsignedBigInteger('task_template_id');
-            $table->foreign('task_template_id')->references('id')->on('task_templates');
-
             $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users');
         });

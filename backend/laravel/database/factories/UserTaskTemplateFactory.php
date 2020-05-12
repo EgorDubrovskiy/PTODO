@@ -12,7 +12,6 @@ $factory->define(UserTaskTemplate::class, function (Faker $faker) {
         'deleted_at' => null,
         'name' => $faker->realText(60),
         'available_for_all' => false,
-        'task_template_id' => null,
         'user_id' => null,
     ];
 });
