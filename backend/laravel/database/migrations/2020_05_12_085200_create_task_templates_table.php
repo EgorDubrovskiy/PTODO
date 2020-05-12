@@ -29,6 +29,9 @@ class CreateTaskTemplatesTable extends Migration
 
             $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('user_task_template_id')->index();
+            $table->foreign('user_task_template_id')->references('id')->on('user_task_templates');
         });
 
         DB::statement('ALTER TABLE task_templates ADD COLUMN parent_path LTREE');

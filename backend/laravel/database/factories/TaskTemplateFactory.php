@@ -13,5 +13,6 @@ $factory->define(TaskTemplate::class, function (Faker $faker) {
         'text' => $faker->realText(60),
         'parent_task_id' => null,
         'user_id' => null,
+        'user_task_template_id' => null,
     ];
 });

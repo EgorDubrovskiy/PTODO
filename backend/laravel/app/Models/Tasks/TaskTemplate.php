@@ -5,6 +5,9 @@ namespace App\Models\Tasks;
 /**
  * Class TaskTemplate
  * @package App\Models
+ *
+ * Database fields:
+ * @property int $user_task_template_id
  */
 class TaskTemplate extends BaseTask
 {
