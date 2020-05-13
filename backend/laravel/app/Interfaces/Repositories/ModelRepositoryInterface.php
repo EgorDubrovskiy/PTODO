@@ -40,4 +40,12 @@ interface ModelRepositoryInterface
      * @return Collection
      */
     public function allDeleted(array $columns = ['*']): Collection;
+
+    /**
+     * @param int $count
+     * @param callable $callback
+     * @param array $columns
+     * @return bool
+     */
+    public function chunkOfAll(int $count, callable $callback, array $columns = ['*']): bool;
 }

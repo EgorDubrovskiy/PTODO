@@ -73,6 +73,20 @@ abstract class BaseRepository implements ModelRepositoryInterface
     }
 
     /**
+     * @param int $count
+     * @param callable $callback
+     * @param array $columns
+     * @return bool
+     */
+    public function chunkOfAll(int $count, callable $callback, array $columns = ['*']): bool
+    {
+        return $this
+            ->newQuery()
+            ->select($columns)
+            ->chunk($count, $callback);
+    }
+
+    /**
      * @return Builder
      */
     protected function newQuery(): Builder
