@@ -30,7 +30,7 @@ abstract class ModelService implements ModelServiceInterface
      * @param array $columns
      * @return Model|null
      */
-    public function getRandomModel(array $columns = []): ?Model
+    public function getRandomModel(array $columns = ['*']): ?Model
     {
         $modelsCollection = $this->repository->all($columns);
 
