@@ -47,7 +47,7 @@ interface ModelRepositoryInterface
      * @param array $columns
      * @return bool
      */
-    public function chunkOfAll(int $count, callable $callback, array $columns = ['*']): bool;
+    public function chunkTestData(int $count, callable $callback, array $columns = ['*']): bool;
 
     /**
      * @param array $columns

@@ -78,12 +78,9 @@ abstract class BaseRepository implements ModelRepositoryInterface
      * @param array $columns
      * @return bool
      */
-    public function chunkOfAll(int $count, callable $callback, array $columns = ['*']): bool
+    public function chunkTestData(int $count, callable $callback, array $columns = ['*']): bool
     {
-        return $this
-            ->newQuery()
-            ->select($columns)
-            ->chunk($count, $callback);
+        return $this->newTestDataQuery()->select($columns)->chunk($count, $callback);
     }
 
     /**
