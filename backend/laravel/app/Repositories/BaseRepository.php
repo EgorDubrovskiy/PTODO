@@ -99,7 +99,7 @@ abstract class BaseRepository implements ModelRepositoryInterface
     {
         $createAt = config('database.seeders.test.common_config.created_at');
 
-        return $this->newQuery()->where('created_at', $createAt);
+        return $this->newQuery()->withTrashed()->where('created_at', $createAt);
     }
 
     /**
