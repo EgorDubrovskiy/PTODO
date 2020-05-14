@@ -14,10 +14,10 @@ interface ModelServiceInterface
      * @param array $columns
      * @return Model|null
      */
-    public function getRandomModel(array $columns = ['*']): ?Model;
+    public function getTestRandomModel(array $columns = ['*']): ?Model;
 
     /**
      * @return int|null
      */
-    public function getRandomModelId(): ?int;
+    public function getTestRandomModelId(): ?int;
 }

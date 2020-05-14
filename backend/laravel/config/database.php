@@ -154,6 +154,9 @@ return [
     */
     'seeders' => [
         'test' => [
+            'common_config' => [
+                'created_at' => '01-01-2020',
+            ],
             'user' => [
                 'amount_simple_users' => env('AMOUNT_SIMPLE_TEST_USERS', 100000),
                 'amount_deleted_users' => env('AMOUNT_DELETED_TEST_USERS', 100000),

@@ -6,7 +6,7 @@ use App\Models\Tasks\Task;
 use Faker\Generator as Faker;
 
 $factory->define(Task::class, function (Faker $faker) {
-    $createdAt = $faker->dateTime('01.01.2020');
+    $createdAt = new DateTime(config('database.seeders.test.common_config.created_at'));
     $startedAt = $faker->dateTimeBetween(
         (clone $createdAt)->add(new DateInterval('PT1S')),
         (clone $createdAt)->add(new DateInterval('PT5H'))

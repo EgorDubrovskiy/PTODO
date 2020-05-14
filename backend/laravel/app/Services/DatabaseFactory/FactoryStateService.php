@@ -41,7 +41,7 @@ class FactoryStateService implements FactoryStateServiceInterface
      */
     public function getUserIdAttribute(): int
     {
-        return $this->userService->getRandomModelId();
+        return $this->userService->getTestRandomModelId();
     }
 
     /**

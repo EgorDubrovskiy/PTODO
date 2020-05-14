@@ -30,9 +30,9 @@ abstract class ModelService implements ModelServiceInterface
      * @param array $columns
      * @return Model|null
      */
-    public function getRandomModel(array $columns = ['*']): ?Model
+    public function getTestRandomModel(array $columns = ['*']): ?Model
     {
-        $modelsCollection = $this->repository->all($columns);
+        $modelsCollection = $this->repository->getAllTestData($columns);
 
         return $modelsCollection->count() > 0 ? $modelsCollection->random() : null;
     }
@@ -40,9 +40,9 @@ abstract class ModelService implements ModelServiceInterface
     /**
      * @return int|null
      */
-    public function getRandomModelId(): ?int
+    public function getTestRandomModelId(): ?int
     {
-        $model = $this->getRandomModel(['id']);
+        $model = $this->getTestRandomModel(['id']);
 
         return $model ? $model->id : null;
     }

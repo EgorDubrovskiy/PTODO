@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(UserTaskTemplate::class, function (Faker $faker) {
     return [
-        'created_at' => $faker->dateTime(),
+        'created_at' => config('database.seeders.test.common_config.created_at'),
         'updated_at' => now(),
         'deleted_at' => null,
         'name' => $faker->realText(60),

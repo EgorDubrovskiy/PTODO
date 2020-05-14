@@ -87,6 +87,25 @@ abstract class BaseRepository implements ModelRepositoryInterface
     }
 
     /**
+     * @param array $columns
+     * @return Collection
+     */
+    public function getAllTestData(array $columns = ['*']): Collection
+    {
+        return $this->newTestDataQuery()->select($columns)->get();
+    }
+
+    /**
+     * @return Builder
+     */
+    protected function newTestDataQuery(): Builder
+    {
+        $createAt = config('database.seeders.test.common_config.created_at');
+
+        return $this->newQuery()->where('created_at', $createAt);
+    }
+
+    /**
      * @return Builder
      */
     protected function newQuery(): Builder
