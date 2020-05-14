@@ -179,6 +179,10 @@ return [
                     'amount_children_for_nested' => env('AMOUNT_CHILDREN_FOR_NESTED_DEMO_TASK_TEMPLATE', 2),
                 ],
             ],
+            'task_comment' => [
+                'amount_tasks_per_chunk' => env('AMOUNT_TASKS_PER_CHUNK_FOR_TEST_TASK_COMMENT_SEEDER', 100),
+                'amount_comments_for_every_task' => env('AMOUNT_TEST_COMMENTS_FOR_EVERY_TEST_TASK', 1),
+            ],
         ],
     ],
 

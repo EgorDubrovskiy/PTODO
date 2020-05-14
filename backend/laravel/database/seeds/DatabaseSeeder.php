@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             TestUserTableSeeder::class,
             TestTaskTemplateTableSeeder::class,
             TestTaskTableSeeder::class,
+            TestTaskCommentTableSeeder::class,
         ]);
     }
 }
